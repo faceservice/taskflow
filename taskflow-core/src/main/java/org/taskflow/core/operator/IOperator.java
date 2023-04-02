@@ -1,9 +1,7 @@
 package org.taskflow.core.operator;
 
-import org.taskflow.core.wrapper.OperatorWrapper;
-
 /**
- * Operator接口
+ * Operator接口 ,泛型<P,V>, P是执行入参，V是返回结果
  * Created by ytyht226 on 2022/3/16.
  */
 @FunctionalInterface
@@ -26,11 +24,13 @@ public interface IOperator<P, V> {
      */
     default void onStart(P param) {
     }
+
     /**
      * OP执行成功后回调
      */
     default void onSuccess(P param, OperatorResult<V> result) {
     }
+
     /**
      * OP执行异常后回调
      */

@@ -18,7 +18,7 @@ import java.lang.reflect.Method;
 import java.util.List;
 
 /**
- * 默认的OP入参解析器
+ * 默认的OP入参解析器, 参数包装器OperatorWrapper
  * 将参数作为一个整体进行解析，不解析子字段，使用 Gson 序列化/反序列化
  * Created by ytyht226 on 2022/11/22.
  */

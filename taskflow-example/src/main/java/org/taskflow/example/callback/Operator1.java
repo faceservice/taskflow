@@ -11,8 +11,7 @@ public class Operator1 implements IOperator<Void, Integer> {
 
     @Override
     public Integer execute(Void param) throws Exception {
-        System.out.println("1...");
         TimeUnit.SECONDS.sleep(3);
-        return 1;
+        return 321;
     }
 }

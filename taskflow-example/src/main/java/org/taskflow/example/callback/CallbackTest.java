@@ -2,6 +2,7 @@ package org.taskflow.example.callback;
 
 import org.junit.Test;
 import org.taskflow.core.DagEngine;
+import org.taskflow.core.operator.OperatorResult;
 import org.taskflow.core.wrapper.OperatorWrapper;
 
 import java.util.concurrent.ExecutorService;
@@ -27,16 +28,14 @@ public class CallbackTest {
         });
         //每个OP的回调
         engine.beforeOp((w) -> {
-            System.out.println("OP: " + w.getId() + " start...");
+            System.out.println("OP: " + w.getId() + "__" + w.getOperatorResult().getResult() + " start...");
         });
         engine.afterOp((w) -> {
-            System.out.println("OP: " + w.getId() + " end...");
+            System.out.println("OP: " + w.getId() + "__" + w.getOperatorResult().getResult() + " end...");
         });
-        OperatorWrapper<Void, Integer> wrapper1 = new OperatorWrapper<Void, Integer>()
-                .id("1")
-                .engine(engine)
-                .operator(operator1)
-                ;
+        OperatorWrapper<Void, Integer> wrapper1 = new OperatorWrapper<Void, Integer>().id("id1").engine(engine).operator(operator1);
+        OperatorResult<Integer> result = wrapper1.getOperatorResult();
+        System.out.println("execute result:" + result.getResult());
 
         engine.runAndWait(9000);
     }
